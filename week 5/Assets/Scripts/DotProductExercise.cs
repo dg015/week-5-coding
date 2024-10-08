@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -17,14 +18,18 @@ public class DotProductExercise : MonoBehaviour
 
     private void getVectors()
     {
-        Vector2 redVector = new Vector2(Mathf.Cos(redAgle), Mathf.Sin(redAgle));
 
-        Debug.DrawLine(redVector, new Vector2(redVector.x + 1, redVector.y + 1), Color.red);
+        float redRads = redAgle * Mathf.Deg2Rad;
+        float blueRads = blueAngle * Mathf.Deg2Rad;
+
+        Vector2 redVector = new Vector2(Mathf.Cos(redRads), Mathf.Sin(redRads));
+
+        Debug.DrawLine(Vector2.zero, redVector, Color.red);
 
 
-        Vector2 blueVector = new Vector2(Mathf.Cos(blueAngle), Mathf.Sin(blueAngle));
+        Vector2 blueVector = new Vector2(Mathf.Cos(blueRads), Mathf.Sin(blueRads));
 
-        Debug.DrawLine(blueVector, new Vector2(blueVector.x + 1, blueVector.y + 1), Color.blue);
+        Debug.DrawLine(Vector2.zero, blueVector, Color.blue);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log(Vector3.Dot(redVector, blueVector));
