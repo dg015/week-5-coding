@@ -7,7 +7,7 @@ public class VisionCone : MonoBehaviour
     public float sightDistance;
     public float visionAngle;
 
-
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +25,29 @@ public class VisionCone : MonoBehaviour
 
         Debug.DrawLine(transform.position, transform.position + leftVector, Color.cyan);
         Debug.DrawLine(transform.position, transform.position + rightVector, Color.cyan);
+
+
+        if (target != null)
+        {
+            Vector3 vectorToTarget = target.transform.position - transform.position;
+
+            Debug.DrawLine(transform.position, transform.position + vectorToTarget, Color.green);
+
+
+            float targetDotProduct = Vector3.Dot(transform.right, vectorToTarget.normalized);
+            float visionDotProdcut = Vector3.Dot(transform.right, leftVector.normalized);
+
+            if( targetDotProduct >= visionDotProdcut && vectorToTarget.magnitude <= sightDistance)
+            {
+                print("target sppoted");
+            }
+        }
     }
+
+    private void drawVisionCone()
+    {
+
+
+    }
+
 }
