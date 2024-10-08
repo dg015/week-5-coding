@@ -22,7 +22,8 @@ public class VisionCone : MonoBehaviour
         Vector3 leftVector = new Vector3(Mathf.Cos(angleInRdas), Mathf.Sin(angleInRdas), 0) * sightDistance;
         Vector3 rightVector = new Vector3(Mathf.Cos(-angleInRdas), Mathf.Sin(-angleInRdas), 0) * sightDistance;
 
-        
 
+        Debug.DrawLine(transform.position, transform.position + leftVector, Color.cyan);
+        Debug.DrawLine(transform.position, transform.position + rightVector, Color.cyan);
     }
 }
